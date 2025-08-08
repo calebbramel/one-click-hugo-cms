@@ -1,13 +1,37 @@
-{{ define "main" }}
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
 
-{{ partial "jumbotron" (dict "imageUrl" .Params.image "title" .Title "subtitle" .Params.subtitle) }}
+  <head>
+    {{ partial "headers.html" . }}
+    {{ partial "custom_headers.html" . }}
+  </head>
 
-{{ partial "short-text" .Params.blurb}}
+  <body>
 
-{{ partial "2-up" .Params }}
+    <div id="all">
 
-{{ partial "text-and-image" (dict "heading" .Params.values.heading "text" .Params.values.text "buttonText" "Read more" "buttonLink" "/values") }}
+        {{ partial "top.html" . }}
 
-{{ partial "blog" . }}
+        {{ partial "nav.html" . }}
 
-{{ end }}
+        {{ partial "carousel.html" . }}
+
+        {{ partial "features.html" . }}
+
+        {{ partial "testimonials.html" . }}
+
+        {{ partial "see_more.html" . }}
+
+        {{ partial "recent_posts.html" . }}
+
+        {{ partial "carriers.html" . }}
+
+        {{ partial "footer.html" . }}
+
+    </div>
+    <!-- /#all -->
+
+    {{ partial "scripts.html" . }}
+
+  </body>
+</html>

@@ -9,35 +9,47 @@
   <body>
 
     <div id="all">
-
         {{ partial "top.html" . }}
 
         {{ partial "nav.html" . }}
 
+        {{ partial "breadcrumbs.html" . }}
+
         <div id="content">
+            {{ if isset .Params "id" }}
+
+              {{ partial .Params.id . }}
+
+            {{ else }}
+
             <div class="container">
 
-                <div class="col-sm-6 col-sm-offset-3" id="error-page">
+                <div class="row">
 
-                    <div class="box">
+                    <div class="col-md-12">
 
-                        <h3>{{ i18n "404Message" | markdownify }}</h3>
-                        <h4 class="text-muted">{{ i18n "404Error" | markdownify }}</h4>
+                        <div>
+                          {{ .Content }}
+                        </div>
 
-                        <p class="buttons"><a href="{{ "/" | relURL }}" class="btn btn-template-main"><i class="fas fa-home"></i> {{ i18n "404NavHome" | markdownify }}</a>
-                        </p>
                     </div>
 
-
                 </div>
-                <!-- /.col-sm-6 -->
+                <!-- /.row -->
+
             </div>
             <!-- /.container -->
+
+            {{ end }}
         </div>
         <!-- /#content -->
 
         {{ partial "footer.html" . }}
 
     </div>
+    <!-- /#all -->
+
+    {{ partial "scripts.html" . }}
+
   </body>
 </html>
